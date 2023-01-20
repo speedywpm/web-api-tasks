@@ -1,5 +1,6 @@
 # web-api-tasks
 Version 1 - set up intial project, added a text line on the index.js of the front end app.
+Version 1.1 - editing this file to see if comitting works.
 
 
 back-end-api-server folder:
