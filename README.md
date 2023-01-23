@@ -13,5 +13,4 @@ npm install koa-bodyparser <br />
 (sudo) npm install -g nodemon  <br />
 <br />
 front-end-app folder: <br />
-npx create-react-app ./ <br />
 npm start <br />
