@@ -1,4 +1,4 @@
-//console.log("Hello API world!");
+console.log("Hello API world!");
 
 const Koa = require('koa');
 const Router = require('koa-router');

@@ -68,13 +68,13 @@ function createArticle(cnx, next)
     cnx.body = newArticle;
 }
 
-function updateArticle(cnx, articles ,next)
+function updateArticle(cnx,next)
 {
     //edit an article
     // i give an id already which article to update
     // 
     //let {title, fullText} = cnx.request.body;
-    let updArticle = {title: 'updated', fullText: 'really updated'}; //supposedly whats to update
+    let updArticle = {title: 'myliu', fullText: 'savo katinuka'}; //supposedly whats to update
     let articleID = cnx.originalUrl
     const lastItem = articleID.substring(articleID.lastIndexOf('/') + 1)
     const numID = Number(lastItem);
@@ -83,10 +83,10 @@ function updateArticle(cnx, articles ,next)
     articles[numID-1] = updArticle; //-1 because arrays are counted from 0
     //gets an article id, therefore gives it to an array and the text to update
     //need to create something to see updates itself.
-    //cnx.body = articles;
+    cnx.body = articles;
 }
 
-function deleteArticle(cnx, articles, next)
+function deleteArticle(cnx, next)
 {
     //delete an article
     // idea is to use a splice, as it is able to remove an element from an array and reindex it
@@ -96,6 +96,7 @@ function deleteArticle(cnx, articles, next)
     console.log(numID); // i get the id
     delete articles[numID-1];
     cnx.status = 201;
+    cnx.body = articles;
 }
 
 // define the exported object when required from other scripts
