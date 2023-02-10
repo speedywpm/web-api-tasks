@@ -27,8 +27,8 @@ router.post('/', bodyParser(), createArticle);
 router.post('/', bodyParser(), updateArticle);
 router.post('/', bodyParser(), deleteArticle);
 router.get('/:id([0-9]{1,})', getById);
-router.get('/update/:id([0-9]{1,})', updateArticle);
-router.get('/delete/:id([0-9]{1,})', deleteArticle);
+router.put('/:id([0-9]{1,})', bodyParser(), updateArticle);
+router.del('/:id([0-9]{1,})', deleteArticle);
 
 //define handler functions used above
 
@@ -125,9 +125,10 @@ async function updateArticle(ctx)
     const lastItem = articleID.substring(articleID.lastIndexOf('/') + 1)
     const numID = Number(lastItem);
     console.log(numID); // i get the id
-    let updArticle = {title: 'updated', allText: "top update"};
-    console.log(updArticle.allText);
-    let result = await model.edit(updArticle.title, updArticle.allText, numID);
+    //let updArticle = {};
+    console.log(body);
+    body.ID=numID;
+    let result = await model.edit(body);
     if (result)
     {
         ctx.status = 201;

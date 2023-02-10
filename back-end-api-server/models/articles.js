@@ -26,17 +26,19 @@ exports.add = async function add (article)
     return data;
 }
 
-exports.edit = async function edit (article, allText, artID)
+exports.edit = async function edit (article)
 {
-    let query = "UPDATE articles SET title = ?, allText = ? WHERE ID = ?";
+    let query = "UPDATE articles SET ? WHERE ID = ?";
     console.log(article);
-    let data = await db.run_query(query, article, allText, artID);
+    const values = [article, article.ID];
+    let data = await db.run_query(query, values);
     return data;
 }
 
 exports.del = async function del (article)
 {
     let query = "DELETE FROM articles WHERE ID = ?";
-    let data = await db.run_query(query, article);
+    const values = [article, article.ID];
+    let data = await db.run_query(query, values);
     return data;
 }
